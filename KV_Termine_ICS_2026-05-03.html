@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kalendertermine</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; padding: 2rem 1rem; }
+    header { max-width: 700px; margin: 0 auto 2rem; }
+    header h1 { font-size: 1.6rem; color: #c0392b; margin-bottom: .25rem; }
+    header p { color: #777; font-size: .9rem; }
+    main { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+    .card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: .35rem; }
+    .card-date { font-size: .85rem; color: #c0392b; font-weight: 600; }
+    .card-title { font-size: 1.05rem; font-weight: 600; }
+    .card-org { font-size: .9rem; color: #555; }
+    .btn-ics { display: inline-block; margin-top: .5rem; padding: .45rem 1rem; background: #c0392b; color: #fff; border-radius: 5px; border: none; cursor: pointer; font-size: .9rem; font-weight: 500; font-family: inherit; }
+    .btn-ics:hover { background: #a93226; }
+    .empty { color: #999; text-align: center; padding: 3rem 0; }
+    footer { max-width: 700px; margin: 2rem auto 0; font-size: .8rem; color: #aaa; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📅 Kalendertermine</h1>
+    <p>Erstellt am 03.05.2026 &middot; 40 Termine</p>
+  </header>
+  <main>
+    
+    <div class="card">
+      <div class="card-date">Sa., 06.06.2026</div>
+      <div class="card-title">Sommerfest</div>
+      <div class="card-org">Benrather Schlossnarren</div>
+      <button class="btn-ics" onclick="downloadIcs(62)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 13.06.2026</div>
+      <div class="card-title">Minigolfturnier</div>
+      <div class="card-org">KGGJ</div>
+      <button class="btn-ics" onclick="downloadIcs(58)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 18.07.2026</div>
+      <div class="card-title">Kirmestreffen</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(16)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">So., 20.09.2026</div>
+      <div class="card-title">Tag des Tanzes</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(17)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Mi., 11.11.2026</div>
+      <div class="card-title">Hoppeditzerwachen</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(19)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Do., 12.11.2026</div>
+      <div class="card-title">Sessionseröffnung</div>
+      <div class="card-org">KGGJ</div>
+      <button class="btn-ics" onclick="downloadIcs(60)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Fr., 13.11.2026</div>
+      <div class="card-title">Prinzenpaarkürung</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(15)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 14.11.2026</div>
+      <div class="card-title">Kinder Hoppeditzerwachen</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(20)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">So., 15.11.2026</div>
+      <div class="card-title">CC-Gottesdienst</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(25)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Do., 19.11.2026</div>
+      <div class="card-title">Ordensverleihung</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(23)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Fr., 20.11.2026</div>
+      <div class="card-title">Sitzung Gemeinsam Jeck</div>
+      <div class="card-org">KGGJ</div>
+      <button class="btn-ics" onclick="downloadIcs(42)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 21.11.2026</div>
+      <div class="card-title">CC-Gottesdienst</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(21)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Do., 07.01.2027</div>
+      <div class="card-title">TV-Sitzung</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(24)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 09.01.2027</div>
+      <div class="card-title">50. Närrische Sportlersitzung</div>
+      <div class="card-org">Elf vom Dörp</div>
+      <button class="btn-ics" onclick="downloadIcs(39)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">So., 10.01.2027</div>
+      <div class="card-title">KakaJu - Schnuppersitzung &quot;Die Vorstellsitzung für neue Künstler&quot;</div>
+      <div class="card-org">KakaJu</div>
+      <button class="btn-ics" onclick="downloadIcs(48)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Mi., 13.01.2027</div>
+      <div class="card-title">Unsere Brauhaussitzung mit Originale?</div>
+      <div class="card-org">KGGJ</div>
+      <button class="btn-ics" onclick="downloadIcs(61)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 16.01.2027</div>
+      <div class="card-title">Damensitzungs-Party?</div>
+      <div class="card-org">Unterrather Funken</div>
+      <button class="btn-ics" onclick="downloadIcs(35)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">So., 17.01.2027</div>
+      <div class="card-title">Frühschoppen 2027</div>
+      <div class="card-org">KG Regenbogen</div>
+      <button class="btn-ics" onclick="downloadIcs(12)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">So., 17.01.2027</div>
+      <div class="card-title">KakaJu - Talk &quot;Jecke Tön &amp; Freche Takte&quot;</div>
+      <div class="card-org">KakaJu</div>
+      <button class="btn-ics" onclick="downloadIcs(49)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Fr., 22.01.2027</div>
+      <div class="card-title">Prinzenpaarempfang</div>
+      <div class="card-org">Benrather Schlossnarren</div>
+      <button class="btn-ics" onclick="downloadIcs(55)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 23.01.2027</div>
+      <div class="card-title">Herrensitzung?</div>
+      <div class="card-org">Unterrather Funken</div>
+      <button class="btn-ics" onclick="downloadIcs(36)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 23.01.2027</div>
+      <div class="card-title">KakaJu - Kinderkarneval (bis 12 Jahre)</div>
+      <div class="card-org">KakaJu</div>
+      <button class="btn-ics" onclick="downloadIcs(50)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 23.01.2027</div>
+      <div class="card-title">Karnevalsparty der Benrather Schloßnarren</div>
+      <div class="card-org">Benrather Schlossnarren</div>
+      <button class="btn-ics" onclick="downloadIcs(56)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">So., 24.01.2027</div>
+      <div class="card-title">10. Seniorennachmittag</div>
+      <div class="card-org">Elf vom Dörp</div>
+      <button class="btn-ics" onclick="downloadIcs(40)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">So., 24.01.2027</div>
+      <div class="card-title">KakaJu - Mädchensitzung</div>
+      <div class="card-org">KakaJu</div>
+      <button class="btn-ics" onclick="downloadIcs(52)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 30.01.2027</div>
+      <div class="card-title">38. Garde-BIWAK</div>
+      <div class="card-org">Elf vom Dörp</div>
+      <button class="btn-ics" onclick="downloadIcs(41)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 30.01.2027</div>
+      <div class="card-title">Kindersitzung?</div>
+      <div class="card-org">Unterrather Funken</div>
+      <button class="btn-ics" onclick="downloadIcs(37)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 30.01.2027</div>
+      <div class="card-title">Sitzungsparty 2027</div>
+      <div class="card-org">KG Regenbogen</div>
+      <button class="btn-ics" onclick="downloadIcs(13)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">So., 31.01.2027</div>
+      <div class="card-title">Herrenfrühschoppen?</div>
+      <div class="card-org">Unterrather Funken</div>
+      <button class="btn-ics" onclick="downloadIcs(38)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">So., 31.01.2027</div>
+      <div class="card-title">KakaJu - Kostümsitzung</div>
+      <div class="card-org">KakaJu</div>
+      <button class="btn-ics" onclick="downloadIcs(53)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Di., 02.02.2027</div>
+      <div class="card-title">Seniorenkarneval</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(30)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Mi., 03.02.2027</div>
+      <div class="card-title">KakaJu - Sitzung für Junge und Junggebliebene -DIE PARTY-</div>
+      <div class="card-org">KakaJu</div>
+      <button class="btn-ics" onclick="downloadIcs(54)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Do., 04.02.2027</div>
+      <div class="card-title">Altweiber</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(27)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Fr., 05.02.2027</div>
+      <div class="card-title">KakaJu - Kostümsitzung &quot;Die Größte&quot;</div>
+      <div class="card-org">KakaJu</div>
+      <button class="btn-ics" onclick="downloadIcs(51)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 06.02.2027</div>
+      <div class="card-title">Kinderumzug</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(28)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Sa., 06.02.2027</div>
+      <div class="card-title">Tunten Lauf 2027</div>
+      <div class="card-org">KG Regenbogen</div>
+      <button class="btn-ics" onclick="downloadIcs(14)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">So., 07.02.2027</div>
+      <div class="card-title">KÖ-Treiben</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(29)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Mo., 08.02.2027</div>
+      <div class="card-title">Rosenmontag</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(34)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Di., 09.02.2027</div>
+      <div class="card-title">Zapfenstreich</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(32)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-date">Mi., 10.02.2027</div>
+      <div class="card-title">Aschermittwoch</div>
+      <div class="card-org">CC</div>
+      <button class="btn-ics" onclick="downloadIcs(33)">
+        📅 Zum Kalender hinzufügen
+      </button>
+    </div>
+  </main>
+  <footer>KV Terminverwaltung &middot; Klick auf einen Button lädt die ICS-Datei herunter</footer>
+  <script>
+    const icsData = {"12":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:12@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270117T111100\r\nSUMMARY:Frühschoppen 2027\r\nDESCRIPTION:KG Regenbogen\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Frühschoppen_2027_2027-01-17.ics"},"13":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:13@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270130T180000\r\nSUMMARY:Sitzungsparty 2027\r\nDESCRIPTION:KG Regenbogen\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Sitzungsparty_2027_2027-01-30.ics"},"14":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:14@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270206T160000\r\nSUMMARY:Tunten Lauf 2027\r\nDESCRIPTION:KG Regenbogen\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Tunten_Lauf_2027_2027-02-06.ics"},"15":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:15@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20261113\r\nSUMMARY:Prinzenpaarkürung\r\nLOCATION:Rheinterassen\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Prinzenpaarkürung_2026-11-13.ics"},"16":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:16@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20260718\r\nSUMMARY:Kirmestreffen\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Kirmestreffen_2026-07-18.ics"},"17":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:17@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20260920\r\nSUMMARY:Tag des Tanzes\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Tag_des_Tanzes_2026-09-20.ics"},"19":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:19@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20261111\r\nSUMMARY:Hoppeditzerwachen\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Hoppeditzerwachen_2026-11-11.ics"},"20":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:20@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20261114\r\nSUMMARY:Kinder Hoppeditzerwachen\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Kinder_Hoppeditzerwachen_2026-11-14.ics"},"21":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:21@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20261121\r\nSUMMARY:CC-Gottesdienst\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"CC-Gottesdienst_2026-11-21.ics"},"23":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:23@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20261119\r\nSUMMARY:Ordensverleihung\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Ordensverleihung_2026-11-19.ics"},"24":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:24@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270107\r\nSUMMARY:TV-Sitzung\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"TV-Sitzung_2027-01-07.ics"},"25":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:25@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20261115\r\nSUMMARY:CC-Gottesdienst\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"CC-Gottesdienst_2026-11-15.ics"},"27":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:27@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270204\r\nSUMMARY:Altweiber\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Altweiber_2027-02-04.ics"},"28":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:28@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270206\r\nSUMMARY:Kinderumzug\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Kinderumzug_2027-02-06.ics"},"29":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:29@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270207\r\nSUMMARY:KÖ-Treiben\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"KÖ-Treiben_2027-02-07.ics"},"30":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:30@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270202\r\nSUMMARY:Seniorenkarneval\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Seniorenkarneval_2027-02-02.ics"},"32":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:32@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270209\r\nSUMMARY:Zapfenstreich\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Zapfenstreich_2027-02-09.ics"},"33":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:33@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270210\r\nSUMMARY:Aschermittwoch\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Aschermittwoch_2027-02-10.ics"},"34":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:34@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270208\r\nSUMMARY:Rosenmontag\r\nDESCRIPTION:CC\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Rosenmontag_2027-02-08.ics"},"35":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:35@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270116T150000\r\nSUMMARY:Damensitzungs-Party?\r\nDESCRIPTION:Unterrather Funken\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Damensitzungs-Party__2027-01-16.ics"},"36":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:36@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270123T150000\r\nSUMMARY:Herrensitzung?\r\nDESCRIPTION:Unterrather Funken\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Herrensitzung__2027-01-23.ics"},"37":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:37@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270130\r\nSUMMARY:Kindersitzung?\r\nDESCRIPTION:Unterrather Funken\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Kindersitzung__2027-01-30.ics"},"38":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:38@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270131\r\nSUMMARY:Herrenfrühschoppen?\r\nDESCRIPTION:Unterrather Funken\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Herrenfrühschoppen__2027-01-31.ics"},"39":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:39@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270109T185000\r\nSUMMARY:50. Närrische Sportlersitzung\r\nDESCRIPTION:Elf vom Dörp\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"50__Närrische_Sportlersitzung_2027-01-09.ics"},"40":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:40@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270124T151100\r\nSUMMARY:10. Seniorennachmittag\r\nDESCRIPTION:Elf vom Dörp\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"10__Seniorennachmittag_2027-01-24.ics"},"41":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:41@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270130T111100\r\nSUMMARY:38. Garde-BIWAK\r\nDESCRIPTION:Elf vom Dörp\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"38__Garde-BIWAK_2027-01-30.ics"},"42":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:42@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20261120\r\nSUMMARY:Sitzung Gemeinsam Jeck\r\nDESCRIPTION:KGGJ\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Sitzung_Gemeinsam_Jeck_2026-11-20.ics"},"48":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:48@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270110T170000\r\nSUMMARY:KakaJu - Schnuppersitzung \"Die Vorstellsitzung für neue Künstler\"\r\nLOCATION:Maxhaus\\, Schulstraße 11\r\nDESCRIPTION:KakaJu\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"KakaJu_-_Schnuppersitzung__Die_Vorstellsitzung_für_neue_Künstler__2027-01-10.ics"},"49":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:49@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270117T111100\r\nSUMMARY:KakaJu - Talk \"Jecke Tön & Freche Takte\"\r\nLOCATION:NN\r\nDESCRIPTION:KakaJu\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"KakaJu_-_Talk__Jecke_Tön___Freche_Takte__2027-01-17.ics"},"50":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:50@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270123T150000\r\nSUMMARY:KakaJu - Kinderkarneval (bis 12 Jahre)\r\nLOCATION:Lambertussaal\\, Stiftsplatz 3\r\nDESCRIPTION:KakaJu\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"KakaJu_-_Kinderkarneval__bis_12_Jahre__2027-01-23.ics"},"51":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:51@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270205T190000\r\nSUMMARY:KakaJu - Kostümsitzung \"Die Größte\"\r\nLOCATION:Maritim Hotel Düsseldorf\r\nDESCRIPTION:KakaJu\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"KakaJu_-_Kostümsitzung__Die_Grö_te__2027-02-05.ics"},"52":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:52@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270124T120000\r\nSUMMARY:KakaJu - Mädchensitzung\r\nLOCATION:Louisiana\\, Bolkerstraße 18\r\nDESCRIPTION:KakaJu\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"KakaJu_-_Mädchensitzung_2027-01-24.ics"},"53":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:53@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270131T170000\r\nSUMMARY:KakaJu - Kostümsitzung\r\nLOCATION:Rheinterrasse Düsseldorf - Radschlägersaal\\, Joseph-Beuys-Ufer 33\r\nDESCRIPTION:KakaJu\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"KakaJu_-_Kostümsitzung_2027-01-31.ics"},"54":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:54@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270203T190000\r\nSUMMARY:KakaJu - Sitzung für Junge und Junggebliebene -DIE PARTY-\r\nLOCATION:Zelt am Burgplatz\\, Burgplatz\r\nDESCRIPTION:KakaJu\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"KakaJu_-_Sitzung_für_Junge_und_Junggebliebene_-DIE_PARTY-_2027-02-03.ics"},"55":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:55@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270122T111100\r\nSUMMARY:Prinzenpaarempfang\r\nLOCATION:Cäcilienstift\\, Paulistraße 3\\, 40597 Düsseldorf\r\nDESCRIPTION:Benrather Schlossnarren\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Prinzenpaarempfang_2027-01-22.ics"},"56":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:56@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART:20270123T171100\r\nSUMMARY:Karnevalsparty der Benrather Schloßnarren\r\nLOCATION:Cäcilienstift\\, Paulistraße 3\\, 40597 Düsseldorf\r\nDESCRIPTION:Benrather Schlossnarren\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Karnevalsparty_der_Benrather_Schlo_narren_2027-01-23.ics"},"58":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:58@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20260613\r\nSUMMARY:Minigolfturnier\r\nDESCRIPTION:KGGJ\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Minigolfturnier_2026-06-13.ics"},"60":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:60@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20261112\r\nSUMMARY:Sessionseröffnung\r\nDESCRIPTION:KGGJ\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Sessionseröffnung_2026-11-12.ics"},"61":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:61@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20270113\r\nSUMMARY:Unsere Brauhaussitzung mit Originale?\r\nDESCRIPTION:KGGJ\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Unsere_Brauhaussitzung_mit_Originale__2027-01-13.ics"},"62":{"ics":"BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KV Terminverwaltung//DE\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nBEGIN:VEVENT\r\nUID:62@kv-terminverwaltung\r\nDTSTAMP:20260503T00000000\r\nDTSTART;VALUE=DATE:20260606\r\nSUMMARY:Sommerfest\r\nDESCRIPTION:Benrather Schlossnarren\\njeck generiert ohne Gewehr\r\nEND:VEVENT\r\nEND:VCALENDAR","filename":"Sommerfest_2026-06-06.ics"}};
+    function downloadIcs(id) {
+      const { ics, filename } = icsData[id];
+      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+  </script>
+</body>
+</html>
